@@ -383,16 +383,27 @@ window.addEventListener("scroll", () => {
   </p>
 </section>
 
-<audio id="bgm" autoplay loop>
+<audio id="bgm" autoplay>
   <source src="bemyhome.mp3" type="audio/mpeg">
 </audio>
 
 <script>
   const music = document.getElementById("bgm");
-  music.volume = 0.2; // 20% volume
+  music.volume = 0.2;
+
+  let playCount = 0;
+
+  music.addEventListener("ended", function() {
+    playCount++;
+    if (playCount < 3) {
+      music.currentTime = 0;
+      music.play();
+    }
+  });
 </script>
 
 
 
 </body>
+
 
